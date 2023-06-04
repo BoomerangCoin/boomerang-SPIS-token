@@ -1,0 +1,38 @@
+{
+	"name": "boomerang-spis-token",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "ISTESTING=1 npx hardhat deploy --network localhost --tags deploy --reset && npx hardhat test",
+	  	"dev": "npx hardhat compile --force && npx hardhat deploy --network localhost --reset && npx hardhat deploy --watch"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"devDependencies": {
+		"@nomiclabs/hardhat-ethers": "npm:hardhat-deploy-ethers@^0.3.0-beta.13",
+		"@nomiclabs/hardhat-waffle": "^2.0.5",
+		"@nomiclabs/hardhat-web3": "^2.0.0",
+		"@openzeppelin/hardhat-upgrades": "^1.23.1",
+		"chai": "^4.3.7",
+		"chai-bignumber": "^3.1.0",
+		"ethereum-waffle": "^4.0.10",
+		"ethers": "^5.7.2",
+		"hardhat": "2.14.0",
+		"hardhat-deploy": "^0.11.26",
+		"web3": "^1.9.0"
+	},
+	"dependencies": {
+		"@openzeppelin/contracts": "4.8.3",
+		"@openzeppelin/contracts-upgradeable": "^4.8.3",
+		"@uniswap/v2-periphery": "^1.1.0-beta.0",
+		"convert-hex": "^0.1.0",
+		"dotenv": "^16.0.3",
+		"hardhat-gas-reporter": "^1.0.9",
+		"hardhat-watcher": "^2.5.0",
+		"luxon": "^3.3.0",
+		"moment": "^2.29.4",
+		"sugar": "^2.0.6"
+	}
+}
