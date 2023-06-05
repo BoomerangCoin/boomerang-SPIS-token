@@ -29,10 +29,9 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  */
 module.exports = {
 
-	solidity: "0.8.4",
-
 	// TODO Critical: This is deployed, but keeps triggering CLI warnings whenever using hardhat.
-	//solidity: "0.8.11",
+	solidity: "0.8.9", // As seen in openzeppelin-contracts/hardhat.config.js
+	//solidity: "0.8.4",
 
 	defaultNetwork: "hardhat",
 
@@ -41,37 +40,27 @@ module.exports = {
 		hardhat: {
 			chainId: 31337,
 		},
-
-		'eth-rinkeby': {
-			url: process.env.ALCHEMYAPI_ETH_RINKEBY_URL,
-			accounts: [process.env.ALCHEMYAPI_ETH_RINKEBY_PK]
-		},
-
-		/*
-		'polygon-main': {
-		   url: process.env.ALCHEMYAPI_POLYGON_MAINNET_URL,
-		   accounts: [process.env.ALCHEMYAPI_POLYGON_MAINNET_PK]
-		}
-		*/
-
-		'polygon-mumbai': {
-			url: process.env.ALCHEMYAPI_POLYGON_MUMBAI_URL,
+		'bsc-test': {
+			url: "https://data-seed-prebsc-1-s1.binance.org:8545",
+			chainId: 97,
+			gasPrice: 20000000000,
 			accounts: [
-				process.env.ACCOUNTS_POLYGON_MUMBAI_DEPLOYER_PK,
-				process.env.ACCOUNTS_POLYGON_MUMBAI_ANONYMOUS_PK,
-				process.env.ACCOUNTS_POLYGON_MUMBAI_DEVMANAGER_PK,
-				//process.env.ALCHEMYAPI_POLYGON_MUMBAI_PK
+				process.env.ACCOUNTS_BSC_TEST_DEPLOYER_PK,
 			]
 		},
+		'bsc-main': {
+			url: "https://bsc-dataseed.binance.org/",
+			chainId: 56,
+			gasPrice: 20000000000,
+			accounts: [
+				process.env.ACCOUNTS_BSC_TEST_DEPLOYER_PK,
+			]
+		}
 	},
 
 	etherscan: {
 		//apiKey: process.env.ETHERSCAN_API_KEY,
-		apiKey: process.env.POLYGONSCAN_API_KEY,
-	},
-
-	polygonscan: {
-		apiKey: process.env.POLYGONSCAN_API_KEY,
+		apiKey: process.env.ETHERSCAN_BSC_API_KEY,
 	},
 
 	gasReporter: {
@@ -81,16 +70,14 @@ module.exports = {
 	namedAccounts: {
 		deployer: {
 			default: 0,
-			'polygon-mumbai': process.env.ACCOUNTS_POLYGON_MUMBAI_DEPLOYER_ADDRESS,
+			'bsc-test': process.env.ACCOUNTS_BSC_TEST_DEPLOYER_ADDRESS,
+			'bsc-main': process.env.ACCOUNTS_BSC_TEST_DEPLOYER_ADDRESS,
 		},
 		anonymous: {
 			default: 1,
-			'polygon-mumbai': process.env.ACCOUNTS_POLYGON_MUMBAI_ANONYMOUS_ADDRESS,
 		},
 		devManager: {
-			default: 4,
-			'polygon-mumbai': process.env.ACCOUNTS_POLYGON_MUMBAI_DEVMANAGER_ADDRESS
-			//localhost: process.env.DEV_MANAGER_ADDRESS
+			default: 2,
 		}
 	},
 
